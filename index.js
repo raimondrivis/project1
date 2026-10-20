@@ -1,14 +1,11 @@
 const express = require('express');
 const fs = require('fs').promises;
 const bodyparser = require('body-parser');
-//moodul andmebaasiga suhtlemiseks, koos async võimalustega
-const mysql = require('mysql2/promise');
 const dateET = require('./src/dateTimeET');
 //moodul keskkonnamuutujate lugemiseks
 require('dotenv').config();
 
 const textRef = 'public/txt/vanasonad.txt';
-const regTextRef = 'public/txt/visits.txt';
 
 //käivitan express() funktsiooni ja tähistan töötava asja nimega "app"
 const app = express();
@@ -20,7 +17,6 @@ app.use(express.static('public'));
 app.use(bodyparser.urlencoded({extended: false}));
 
 app.get('/', (req, res)=>{
-	//res.send('Express.js veeb käivitus!');
 	const day = dateET.dayET();
 	const date = dateET.dateET(0);
 	const time = dateET.timeET();
@@ -38,23 +34,6 @@ app.get('/vanasona', async (req, res)=>{
 		console.log(err);
 		res.render('wisdom', {wisdom: 'Kahjuks ühtegi vanasõna ei leitud!'});
 	}
-});
-
-app.get('/regvisit', (req, res)=>{
-	res.render('regvisit');
-});
-
-app.post('/regvisit', async (req, res)=>{
-	console.log(req.body);
-	try {
-		await fs.open(regTextRef, 'a');
-		await fs.appendFile(regTextRef, req.body.nameInput + ';');
-		res.render('regvisit');
-	}
-	catch (err) {
-		console.log(err);
-		res.render('regvisit');
-	}	
 });
 
 const eestifilmRouter = require('./routes/eestifilmRoutes');
