@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Külastused</title>
+</head>
+<body>
+    <h1>Külastused</h1>
+
+    <% if (lastVisit) { %>
+        <p>Viimane külastaja: <%= lastVisit %></p>
+    <% } else { %>
+        <p>Külastusi pole veel registreeritud.</p>
+    <% } %>
+
+    <a href="/visits/register">Registreeri külastus</a>
+    <br>
+    <a href="/">Avalehele</a>
+</body>
+</html>
