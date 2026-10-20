@@ -58,6 +58,9 @@ app.post('/regvisit', async (req, res)=>{
 });
 
 const eestifilmRouter = require('./routes/eestifilmRoutes');
+const visitRouter = require('./routes/visitRoutes');
+
 app.use('/eestifilm', eestifilmRouter);
+app.use('/visits', visitRouter);
 
 app.listen(5301);
