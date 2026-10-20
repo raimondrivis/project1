@@ -21,7 +21,7 @@ const eestifilmInimesed = async (req, res) => {
 			host: process.env.DB_HOST,
 			user: process.env.DB_USER,
 			password: process.env.DB_PASS,
-			database: 'if26_Raimond_Rivis'
+			database: 'if26_raimond_rivis'
 		});
 		//defineerime SQL päringu
 		let sqlReq = 'SELECT * FROM person';
@@ -77,7 +77,7 @@ const eestifilmInimesedLisaPost = async (req, res) => {
 			host: process.env.DB_HOST,
 			user: process.env.DB_USER,
 			password: process.env.DB_PASS,
-			database: 'if26_Raimond_Rivis'
+			database: 'if26_raimond_rivis'
 		});
 		let sqlReq = 'INSERT INTO person (first_name, last_name, born, deceased) VALUES (?,?,?,?)';
 		await conn.execute(sqlReq, [
@@ -112,7 +112,7 @@ const filmid = async (req, res) => {
 			host: process.env.DB_HOST,
 			user: process.env.DB_USER,
 			password: process.env.DB_PASS,
-			database: 'if26_Raimond_Rivis',
+			database: 'if26_raimond_rivis',
 		});
 		const sqlReq = 'SELECT * FROM movie ORDER BY title';
 		const [sqlRes] = await conn.execute(sqlReq);
@@ -164,7 +164,7 @@ const filmidAddPost = async (req, res) => {
 			host: process.env.DB_HOST,
 			user: process.env.DB_USER,
 			password: process.env.DB_PASS,
-			database: 'if26_Raimond_Rivis',
+			database: 'if26_raimond_rivis',
 		});
 		let sqlReq = 'INSERT INTO movie (title, release_year, duration_minutes, description) VALUES (?,?,?,?)';
 		await conn.execute(sqlReq, [req.body.titleInput, year, duration, req.body.descriptionInput || null]);
@@ -193,7 +193,7 @@ const ametid = async (req, res)=>{
             host: process.env.DB_HOST,
             user: process.env.DB_USER,
             password: process.env.DB_PASS,
-            database: 'if26_Raimond_Rivis'
+            database: 'if26_raimond_rivis'
         });
         const sqlReq = 'SELECT * FROM profession ORDER by id';
         const [sqlRes] = await conn.execute(sqlReq);
@@ -255,7 +255,7 @@ const ametidAddPost = async (req, res) => {
             host: process.env.DB_HOST,
             user: process.env.DB_USER,
             password: process.env.DB_PASS,
-            database: 'if26_Raimond_Rivis'
+            database: 'if26_raimond_rivis'
         });
 
         const sqlReq = 'INSERT INTO profession (title, description) VALUES (?, ?)';
