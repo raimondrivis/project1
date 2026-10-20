@@ -10,29 +10,31 @@ const {
 	filmid,
 	filmidAdd,
 	filmidAddPost,
-    ametid,
-    ametidAdd,
-    ametidAddPost
+	ametid,
+	ametidAdd,
+	ametidAddPost
 } = require('../controllers/eestifilmControllers');
 
-router.route('/').get(eestifilm);
+const {
+	seosedAdd,
+	seosedAddPost
+} = require('../controllers/eestifilmSeosedControllers');
 
-router.route('/film_inimesed').get(eestifilmInimesed);
+router.get('/', eestifilm);
 
-router.route('/lisa_film_inimesed').get(eestifilmInimesedLisa);
+router.get('/film_inimesed', eestifilmInimesed);
+router.get('/lisa_film_inimesed', eestifilmInimesedLisa);
+router.post('/lisa_film_inimesed', eestifilmInimesedLisaPost);
 
-router.route('/lisa_film_inimesed').post(eestifilmInimesedLisaPost);
+router.get('/filmid', filmid);
+router.get('/filmid_add', filmidAdd);
+router.post('/filmid_add', filmidAddPost);
 
-router.route('/filmid').get(filmid);
+router.get('/ametid', ametid);
+router.get('/ametid_add', ametidAdd);
+router.post('/ametid_add', ametidAddPost);
 
-router.route('/filmid_add').get(filmidAdd);
-
-router.route('/filmid_add').post(filmidAddPost);
-
-router.route('/ametid').get(ametid);
-
-router.route('/ametid_add').get(ametidAdd);
-
-router.route('/ametid_add').post(ametidAddPost);
+router.get('/seosed_add', seosedAdd);
+router.post('/seosed_add', seosedAddPost);
 
 module.exports = router;
