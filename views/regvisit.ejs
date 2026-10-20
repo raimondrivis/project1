@@ -5,17 +5,21 @@
 	<title>Raimond Rivis, veebiprogrammeerimine</title>
 </head>
 <body>
-	<img src="pic/veebiprogrammeerimine_2026_AA.png" alt="banner">
+	<img src="/pic/veebiprogrammeerimine_2026_AA.png" alt="banner">
 	<h1>Registreeri oma külastus</h1>
 	<ul>
 		<li><a href="/">Avalehele</a></li>
+		<li><a href="/visits">Külastuste avalehele</a></li>
 	</ul>
 	<hr>
-	<form method="POST">
+	<form action="/visits/register" method="POST">
 		<label for="nameInput">Sinu eesnimi: </label>
 		<input id="nameInput" name="nameInput" type="text" placeholder="Sinu eesnimi ...">
 		<input id="nameSubmit" name="nameSubmit" type="submit" value="Salvesta">
-	<form action="/visits/register" method="POST">
+	</form>
+	<% if (notice) { %>
+		<p><%= notice %></p>
+	<% } %>
 	<hr>
 </body>
 </html>
